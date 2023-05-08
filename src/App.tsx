@@ -78,17 +78,17 @@ function App() {
               ]
             }
           ]
+        },
+        {
+          path: "*",
+          element: <NotFound />
         }
       ]
     },
     {
       path: "/characters",
       element: <Characters />
-    },
-    {
-      path: "*",
-      element: <NotFound />
-    }    
+    }        
   ])
 
   return (
