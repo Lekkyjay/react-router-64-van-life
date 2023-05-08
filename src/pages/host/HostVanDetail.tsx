@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
+import { Link, NavLink, Outlet, useOutletContext, useParams } from 'react-router-dom'
 import { IVan } from '../../interfaces'
 
 export default function HostVanDetail() {
@@ -50,4 +50,8 @@ export default function HostVanDetail() {
       </div>
     </section>
   )
+}
+
+export function useCurrentVan() {
+  return useOutletContext<{ currentVan: IVan | null }>()
 }
