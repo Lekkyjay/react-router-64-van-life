@@ -1,5 +1,9 @@
+import { useCurrentVan } from './HostVanDetail'
+
 export default function HostVanPhotos() {
+  const { currentVan } = useCurrentVan()
+
   return (
-    <div>HostVanPhotos</div>
+    <img src={currentVan!.imageUrl} className="host-van-detail-image" />
   )
 }
