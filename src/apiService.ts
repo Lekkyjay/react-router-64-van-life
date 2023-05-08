@@ -10,10 +10,5 @@ export async function getVans() {
     }
   }
   const data = await res.json()
-  await timeOut(1000)
   return data
-}
-
-function timeOut(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
 }
