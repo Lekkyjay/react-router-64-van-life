@@ -5,7 +5,6 @@ import { IVan } from '../../interfaces'
 export default function HostVanDetail() {
   const { id } = useParams()
   const [currentVan, setCurrentVan] = useState<IVan>({} as IVan)
-
   const apiURL = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-poqsu/endpoint/host/vans'
 
   const activeStyles = {
@@ -43,15 +42,9 @@ export default function HostVanDetail() {
         </div>
 
         <nav className="host-van-detail-nav">
-          <NavLink to="." end style={navLinkStyles}>
-            Details
-          </NavLink>
-          <NavLink to="pricing" style={navLinkStyles}>
-            Pricing
-          </NavLink>
-          <NavLink to="photos" style={navLinkStyles}>
-            Photos
-          </NavLink>
+          <NavLink to="." end style={navLinkStyles}>Details</NavLink>
+          <NavLink to="pricing" style={navLinkStyles}>Pricing</NavLink>
+          <NavLink to="photos" style={navLinkStyles}>Photos</NavLink>
         </nav>
         <Outlet context={{ currentVan }} />
       </div>
