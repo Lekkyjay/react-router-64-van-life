@@ -1,19 +1,11 @@
-import { useState, useEffect } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useLoaderData, useNavigation, useSearchParams } from 'react-router-dom'
 import { IVan } from '../../interfaces'
+import { getVans } from '../../apiService'
 
 export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [vans, setVans] = useState<IVan[]>([])
-  const apiURL = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-poqsu/endpoint/vans'
-
-  // console.log(searchParams.toString())
-  
-  useEffect(() => {
-    fetch(apiURL)
-      .then(res => res.json())
-      .then(data => setVans(data))
-  }, [])
+  const vans = useLoaderData() as IVan[]
+  const navigation = useNavigation()
 
   const typeFilter = searchParams.get('type')
 
@@ -34,6 +26,8 @@ export default function Vans() {
     </div>
   ))
 
+  if (navigation.state === 'loading') return <h1>Loading ...</h1>
+
   return (
     <div className="van-list-container">
       <h1>Explore our van options</h1>
@@ -53,4 +47,8 @@ export default function Vans() {
       </div>
     </div>
   )
+}
+
+export function vansLoader() {
+  return getVans()
 }

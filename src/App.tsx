@@ -3,7 +3,7 @@ import RootLayout from './components/RootLayout'
 import HostLayout from './components/HostLayout'
 import Home from './pages/Home'
 import About from './pages/About'
-import Vans from './pages/vans/Vans'
+import Vans, { vansLoader } from './pages/vans/Vans'
 import VanDetail from './pages/vans/VanDetail'
 import NotFound from './pages/NotFound'
 import Dashboard from './pages/host/Dashboard'
@@ -33,7 +33,8 @@ function App() {
         },
         {
           path: "vans",
-          element: <Vans />
+          element: <Vans />,
+          loader: vansLoader
         },
         {
           path: "vans/:id",
