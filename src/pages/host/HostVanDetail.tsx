@@ -16,7 +16,7 @@ export default function HostVanDetail() {
   const navLinkStyles = ({ isActive }: { isActive: Boolean }) => isActive ? activeStyles : {}
 
   useEffect(() => {
-    fetch(`${apiURL}?id=${id}`)
+    fetch(`${apiURL}?id=${id}`)    
       .then(res => res.json())
       .then(data => setCurrentVan(data[0]))
   }, [])
