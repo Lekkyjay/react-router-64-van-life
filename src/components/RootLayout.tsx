@@ -5,11 +5,11 @@ import Header from './Header'
 export default function RootLayout() {
   return (
     <div className="site-wrapper">
-        <Header />
-        <main>
-            <Outlet />
-        </main>
-        <Footer />
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   )
 }
