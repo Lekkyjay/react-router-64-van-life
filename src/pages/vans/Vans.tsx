@@ -6,6 +6,8 @@ export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [vans, setVans] = useState<IVan[]>([])
   const apiURL = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-poqsu/endpoint/vans'
+
+  // console.log(searchParams.toString())
   
   useEffect(() => {
     fetch(apiURL)
@@ -21,7 +23,7 @@ export default function Vans() {
 
   const vanElements = filteredVans?.map(van => (
     <div key={van._id} className="van-tile">
-      <Link to={van._id}>
+      <Link to={van._id} state={{ search: `?${searchParams.toString()}`, type: typeFilter }}>
         <img src={van.imageUrl} />
         <div className="van-info">
           <h3>{van.name}</h3>

@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { IVan } from '../../interfaces'
 
 export default function VanDetail() {
   const { id } = useParams()
   const [van, setVan] = useState<IVan>({} as IVan)
+  const location = useLocation()
+
+  // console.log(location)
+
+  //helps keep previous state when returning to previous page
+  const search = location.state.search
+  const type = location.state.type || 'all'
 
   const apiURL = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-poqsu/endpoint/van'
 
@@ -16,7 +23,9 @@ export default function VanDetail() {
 
   return (
     <div className="van-detail-container">
-      <Link to=".." relative="path" className="back-button">&larr; <span>Back to all vans</span></Link>
+      <Link to={`..${search}`} relative="path" className="back-button">
+        &larr; <span>Back to {type} vans</span>
+      </Link>
       {van 
         ? (
             <div className="van-detail">
