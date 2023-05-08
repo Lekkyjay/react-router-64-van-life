@@ -60,7 +60,7 @@ function App() {
             },
             {
               path: "vans/:id",
-              element: <HostVanDetail />,
+              element: <HostVanDetail />,     //component layout
               children: [
                 {
                   index: true,
