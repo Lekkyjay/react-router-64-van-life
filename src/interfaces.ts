@@ -7,3 +7,9 @@ export interface IVan {
   type: string
   hostId: string
 }
+
+export interface IError {
+  message: string
+  status: string
+  statusText: string
+}

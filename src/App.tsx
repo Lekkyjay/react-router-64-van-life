@@ -16,6 +16,7 @@ import HostVanPricing from './pages/host/HostVanPricing'
 import HostVanPhotos from './pages/host/HostVanPhotos'
 import Characters from './pages/Characters'
 import './App.css'
+import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +35,7 @@ function App() {
         {
           path: "vans",
           element: <Vans />,
+          errorElement: <ErrorBoundary />,
           loader: vansLoader
         },
         {
