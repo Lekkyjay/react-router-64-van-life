@@ -21,7 +21,7 @@ export default function Vans() {
 
   const vanElements = filteredVans?.map(van => (
     <div key={van._id} className="van-tile">
-      <Link to={`/vans/${van._id}`}>
+      <Link to={van._id}>
         <img src={van.imageUrl} />
         <div className="van-info">
           <h3>{van.name}</h3>
