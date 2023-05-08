@@ -14,6 +14,7 @@ import HostVanDetail from './pages/host/HostVanDetail'
 import HostVanInfo from './pages/host/HostVanInfo'
 import HostVanPricing from './pages/host/HostVanPricing'
 import HostVanPhotos from './pages/host/HostVanPhotos'
+import Characters from './pages/Characters'
 import './App.css'
 
 function App() {
@@ -79,6 +80,10 @@ function App() {
           ]
         }
       ]
+    },
+    {
+      path: "/characters",
+      element: <Characters />
     },
     {
       path: "*",
