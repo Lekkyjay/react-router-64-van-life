@@ -1,11 +1,11 @@
-// import { useState, useEffect } from 'react'
 import { Link, LoaderFunctionArgs, NavLink, Outlet, useLoaderData, useOutletContext } from 'react-router-dom'
 import { IVan } from '../../interfaces'
 import { getHostVanDetail } from '../../apiService'
+import { requireAuth } from '../../utils'
 
 export default function HostVanDetail() {
   const currentVan = useLoaderData() as IVan
-  
+
   const activeStyles = {
     fontWeight: "bold",
     textDecoration: "underline",
@@ -45,6 +45,7 @@ export function useCurrentVan() {
   return useOutletContext<{ currentVan: IVan | null }>()
 }
 
-export function hostVanDetailLoader({ params }: LoaderFunctionArgs) {
+export async function hostVanDetailLoader({ params }: LoaderFunctionArgs) {
+  await requireAuth()
   return getHostVanDetail(params.id!)
 }

@@ -16,7 +16,8 @@ import HostVanInfo from './pages/host/HostVanInfo'
 import HostVanPricing from './pages/host/HostVanPricing'
 import HostVanPhotos from './pages/host/HostVanPhotos'
 import Characters from './pages/Characters'
-import Login from './pages/Login'
+import Login, { loginAction, loginLoader } from './pages/Login'
+import { requireAuth } from './utils'
 import './App.css'
 
 function App() {
@@ -35,7 +36,9 @@ function App() {
         },
         {
           path: "login",
-          element: <Login />
+          element: <Login />,
+          loader: loginLoader,
+          action: loginAction
         },
         {
           path: "vans",
@@ -54,15 +57,18 @@ function App() {
           children: [
             {
               index: true,
-              element: <Dashboard />
+              element: <Dashboard />,
+              loader: async () => await requireAuth()
             },
             {
               path: "income",
-              element: <Income />
+              element: <Income />,
+              loader: async () => await requireAuth()
             },
             {
               path: "reviews",
-              element: <Reviews />
+              element: <Reviews />,
+              loader: async () => await requireAuth()
             },
             {
               path: "vans",
@@ -76,15 +82,18 @@ function App() {
               children: [
                 {
                   index: true,
-                  element: <HostVanInfo />
+                  element: <HostVanInfo />,
+                  loader: async () => await requireAuth()
                 },
                 {
                   path: "pricing",
-                  element: <HostVanPricing />
+                  element: <HostVanPricing />,
+                  loader: async () => await requireAuth()
                 },
                 {
                   path: "photos",
-                  element: <HostVanPhotos />
+                  element: <HostVanPhotos />,
+                  loader: async () => await requireAuth()
                 }
               ]
             }

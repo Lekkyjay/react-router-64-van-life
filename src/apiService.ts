@@ -1,5 +1,6 @@
 const vansURL = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-poqsu/endpoint/vans'
 const hostVansURL = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-poqsu/endpoint/host/vans'
+const loginUrl = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-poqsu/endpoint/login'
 
 export async function getVans() {
   const res = await fetch(vansURL)
@@ -52,4 +53,19 @@ export async function getHostVanDetail(id: string) {
   }
   const data = await res.json()
   return data[0]
+}
+
+export async function loginUser(creds: { email: string, password: string}) {
+  const res = await fetch(loginUrl, { method: "post", body: JSON.stringify(creds) })
+  const data = await res.json()
+
+  if (!res.ok) {
+    throw {
+      message: data.message,
+      statusText: res.statusText,
+      status: res.status
+    }
+  }
+
+  return data
 }
