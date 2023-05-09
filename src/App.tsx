@@ -5,7 +5,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
 import About from './pages/About'
 import Vans, { vansLoader } from './pages/vans/Vans'
-import VanDetail from './pages/vans/VanDetail'
+import VanDetail, { vanDetailLoader } from './pages/vans/VanDetail'
 import NotFound from './pages/NotFound'
 import Dashboard from './pages/host/Dashboard'
 import Income from './pages/host/Income'
@@ -45,7 +45,8 @@ function App() {
         },
         {
           path: "vans/:id",
-          element: <VanDetail />
+          element: <VanDetail />,
+          loader: vanDetailLoader
         },
         {
           path: "host",
