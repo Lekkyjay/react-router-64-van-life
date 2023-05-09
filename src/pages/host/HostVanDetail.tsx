@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react'
-import { Link, NavLink, Outlet, useOutletContext, useParams } from 'react-router-dom'
+// import { useState, useEffect } from 'react'
+import { Link, LoaderFunctionArgs, NavLink, Outlet, useLoaderData, useOutletContext } from 'react-router-dom'
 import { IVan } from '../../interfaces'
+import { getHostVanDetail } from '../../apiService'
 
 export default function HostVanDetail() {
-  const { id } = useParams()
-  const [currentVan, setCurrentVan] = useState<IVan>({} as IVan)
-  const apiURL = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-poqsu/endpoint/host/vans'
-
+  const currentVan = useLoaderData() as IVan
+  
   const activeStyles = {
     fontWeight: "bold",
     textDecoration: "underline",
@@ -14,16 +13,6 @@ export default function HostVanDetail() {
   }
 
   const navLinkStyles = ({ isActive }: { isActive: Boolean }) => isActive ? activeStyles : {}
-
-  useEffect(() => {
-    fetch(`${apiURL}?id=${id}`)    
-      .then(res => res.json())
-      .then(data => setCurrentVan(data[0]))
-  }, [])
-
-  if (!currentVan) {
-    return <h1>Loading...</h1>
-  }
 
   return (
     <section>
@@ -54,4 +43,8 @@ export default function HostVanDetail() {
 
 export function useCurrentVan() {
   return useOutletContext<{ currentVan: IVan | null }>()
+}
+
+export function hostVanDetailLoader({ params }: LoaderFunctionArgs) {
+  return getHostVanDetail(params.id!)
 }

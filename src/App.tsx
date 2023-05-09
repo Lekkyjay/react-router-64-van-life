@@ -10,8 +10,8 @@ import NotFound from './pages/NotFound'
 import Dashboard from './pages/host/Dashboard'
 import Income from './pages/host/Income'
 import Reviews from './pages/host/Reviews'
-import HostVans from './pages/host/HostVans'
-import HostVanDetail from './pages/host/HostVanDetail'
+import HostVans, { hostVansLoader } from './pages/host/HostVans'
+import HostVanDetail, { hostVanDetailLoader } from './pages/host/HostVanDetail'
 import HostVanInfo from './pages/host/HostVanInfo'
 import HostVanPricing from './pages/host/HostVanPricing'
 import HostVanPhotos from './pages/host/HostVanPhotos'
@@ -66,11 +66,13 @@ function App() {
             },
             {
               path: "vans",
-              element: <HostVans />
+              element: <HostVans />,
+              loader: hostVansLoader
             },
             {
               path: "vans/:id",
               element: <HostVanDetail />,     //component layout
+              loader: hostVanDetailLoader,
               children: [
                 {
                   index: true,

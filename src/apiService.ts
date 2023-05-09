@@ -37,18 +37,19 @@ export async function getHostVans() {
     }
   }
   const data = await res.json()
-  return data.vans
+  return data
 }
 
+//same as getVanDetail
 export async function getHostVanDetail(id: string) {
-  const res = await fetch(`${hostVansURL}?id=${id}`)
+  const res = await fetch(`${vansURL}?id=${id}`)
   if (!res.ok) {
     throw {
-      message: 'Failed to fetch host van details',
+      message: 'Failed to fetch van details', 
       statusText: res.statusText,
       status: res.status
     }
   }
   const data = await res.json()
-  return data.vans
+  return data[0]
 }
