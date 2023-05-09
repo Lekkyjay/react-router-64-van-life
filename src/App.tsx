@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import RootLayout from './components/RootLayout'
 import HostLayout from './components/HostLayout'
+import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
 import About from './pages/About'
 import Vans, { vansLoader } from './pages/vans/Vans'
@@ -15,8 +16,8 @@ import HostVanInfo from './pages/host/HostVanInfo'
 import HostVanPricing from './pages/host/HostVanPricing'
 import HostVanPhotos from './pages/host/HostVanPhotos'
 import Characters from './pages/Characters'
+import Login from './pages/Login'
 import './App.css'
-import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
   const router = createBrowserRouter([
@@ -31,6 +32,10 @@ function App() {
         {
           path: "about",
           element: <About />
+        },
+        {
+          path: "login",
+          element: <Login />
         },
         {
           path: "vans",
