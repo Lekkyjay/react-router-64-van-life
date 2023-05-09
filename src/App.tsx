@@ -58,17 +58,17 @@ function App() {
             {
               index: true,
               element: <Dashboard />,
-              loader: async () => await requireAuth()
+              loader: async ({ request }) => await requireAuth(request)
             },
             {
               path: "income",
               element: <Income />,
-              loader: async () => await requireAuth()
+              loader: async ({ request }) => await requireAuth(request)
             },
             {
               path: "reviews",
               element: <Reviews />,
-              loader: async () => await requireAuth()
+              loader: async ({ request }) => await requireAuth(request)
             },
             {
               path: "vans",
@@ -78,22 +78,22 @@ function App() {
             {
               path: "vans/:id",
               element: <HostVanDetail />,     //component layout
-              loader: hostVanDetailLoader,
+              loader: hostVanDetailLoader,  
               children: [
                 {
                   index: true,
                   element: <HostVanInfo />,
-                  loader: async () => await requireAuth()
+                  loader: async ({ request }) => await requireAuth(request)
                 },
                 {
                   path: "pricing",
                   element: <HostVanPricing />,
-                  loader: async () => await requireAuth()
+                  loader: async ({ request }) => await requireAuth(request)
                 },
                 {
                   path: "photos",
                   element: <HostVanPhotos />,
-                  loader: async () => await requireAuth()
+                  loader: async ({ request }) => await requireAuth(request)
                 }
               ]
             }

@@ -28,7 +28,7 @@ export default function HostVans() {
   )
 }
 
-export async function hostVansLoader() {
-  await requireAuth()
+export async function hostVansLoader({ request }: any) {
+  await requireAuth(request)
   return getHostVans()
 }

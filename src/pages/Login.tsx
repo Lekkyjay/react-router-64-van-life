@@ -30,11 +30,15 @@ export async function loginAction({ request }: any) {
   const formData = await request.formData()
   const email = formData.get('email')
   const password = formData.get('password')
+
   if (email === '' || password === '') return 'Credentials must be provided'
+
+  const pathname = new URL(request.url).searchParams.get('redirectTo') || '/host'
+
   try {
     const user = await loginUser({ email, password })
     localStorage.setItem('loggedin', JSON.stringify(user))
-    return redirect('/host')
+    return redirect(pathname)
   } 
   catch(err: any) {
     return err.message

@@ -45,7 +45,7 @@ export function useCurrentVan() {
   return useOutletContext<{ currentVan: IVan | null }>()
 }
 
-export async function hostVanDetailLoader({ params }: LoaderFunctionArgs) {
-  await requireAuth()
+export async function hostVanDetailLoader({ params, request }: LoaderFunctionArgs) {
+  await requireAuth(request)
   return getHostVanDetail(params.id!)
 }
