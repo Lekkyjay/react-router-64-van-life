@@ -56,6 +56,7 @@ export async function getHostVanDetail(id: string) {
 }
 
 export async function loginUser(creds: { email: string, password: string}) {
+  await sleep(1000)
   const res = await fetch(loginUrl, { method: "post", body: JSON.stringify(creds) })
   const data = await res.json()
 
@@ -68,4 +69,8 @@ export async function loginUser(creds: { email: string, password: string}) {
   }
 
   return data
+}
+
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }

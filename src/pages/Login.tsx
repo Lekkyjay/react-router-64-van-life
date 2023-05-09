@@ -30,6 +30,7 @@ export async function loginAction({ request }: any) {
   const formData = await request.formData()
   const email = formData.get('email')
   const password = formData.get('password')
+  if (email === '' || password === '') return 'Credentials must be provided'
   try {
     const user = await loginUser({ email, password })
     localStorage.setItem('loggedin', JSON.stringify(user))
