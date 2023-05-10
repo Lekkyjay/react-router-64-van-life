@@ -3,7 +3,7 @@ const hostVansURL = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-p
 const loginUrl = 'https://us-central1.gcp.data.mongodb-api.com/app/van-life-poqsu/endpoint/login'
 
 export async function getVans() {
-  await sleep(3000)
+  await sleep(1000)
   const res = await fetch(vansURL)
   if (!res.ok) {
     throw {
