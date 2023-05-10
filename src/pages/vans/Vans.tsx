@@ -1,6 +1,7 @@
 import { Await, Link, defer, useLoaderData, useNavigation, useSearchParams } from 'react-router-dom'
 import { IVan } from '../../interfaces'
 import { getVans } from '../../apiService'
+import React from 'react'
 
 export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -56,11 +57,11 @@ export default function Vans() {
   return (
     <div className="van-list-container">
       <h1>Explore our van options</h1>
-      
-      <Await resolve={vansPromise.vans}>
-        { renderVans }      
-      </Await>
-      
+      <React.Suspense fallback={<h2>Loading vans...</h2>}>
+        <Await resolve={vansPromise.vans}>
+          { renderVans }      
+        </Await>
+      </React.Suspense>
     </div>
   )
 }
