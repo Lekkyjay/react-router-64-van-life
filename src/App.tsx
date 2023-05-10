@@ -7,7 +7,7 @@ import About from './pages/About'
 import Vans, { vansLoader } from './pages/vans/Vans'
 import VanDetail, { vanDetailLoader } from './pages/vans/VanDetail'
 import NotFound from './pages/NotFound'
-import Dashboard from './pages/host/Dashboard'
+import Dashboard, { dashBoardLoader } from './pages/host/Dashboard'
 import Income from './pages/host/Income'
 import Reviews from './pages/host/Reviews'
 import HostVans, { hostVansLoader } from './pages/host/HostVans'
@@ -59,7 +59,7 @@ function App() {
             {
               index: true,
               element: <Dashboard />,
-              loader: async ({ request }) => await requireAuth(request)
+              loader: dashBoardLoader
             },
             {
               path: "income",
