@@ -49,6 +49,7 @@ function App() {
         {
           path: "vans/:id",
           element: <VanDetail />,
+          errorElement: <ErrorBoundary />,
           loader: vanDetailLoader
         },
         {
@@ -73,11 +74,13 @@ function App() {
             {
               path: "vans",
               element: <HostVans />,
+              errorElement: <ErrorBoundary />,
               loader: hostVansLoader
             },
             {
               path: "vans/:id",
               element: <HostVanDetail />,     //component layout
+              errorElement: <ErrorBoundary />,
               loader: hostVanDetailLoader,  
               children: [
                 {
